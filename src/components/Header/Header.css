@@ -1,0 +1,58 @@
+.toggle :first-child {
+  position: absolute;
+  display: none;
+}
+.toggle :nth-child(2) {
+  width: 1.5rem;
+  transition-duration: 100ms;
+  transition-timing-function: ease-in-out;
+}
+.toggle :last-child {
+  position: absolute;
+  display: none;
+}
+.active-link::before {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 0%;
+  bottom: 0;
+  transition: 300ms ease-in-out;
+  background-color: black;
+}
+.active-link:hover::before {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  bottom: 0;
+  background-color: black;
+}
+.active::before {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  bottom: 0;
+  background-color: black;
+}
+@media screen and (max-width: 1023px) {
+  .active::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 24px;
+    left: 0;
+    top: 0;
+    background-color: black;
+  }
+  .active-link:hover::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 24px;
+    left: 0;
+    top: 0;
+    background-color: black;
+  }
+}
