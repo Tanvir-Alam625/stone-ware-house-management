@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import HeaderLogo from "../../img/logo-removebg-preview.png";
 import "./Header.css";
 const Header = () => {
   const [toggler, setToggler] = useState(false);
@@ -10,9 +10,15 @@ const Header = () => {
   return (
     <header className="py-[10px] bg-teal-400  sticky top-0 font-mono  overflow-x-hidden z-10">
       <nav className="flex justify-between max-w-[1024px] lg:mx-auto md:mx-6 mx-2 ">
-        <div className="nav-logo cursor-pointer">
-          <h2 className="text-4xl font-mono font-bold capitalize">logo</h2>
-        </div>
+        <Link
+          to="/"
+          className="nav-logo cursor-pointer flex flex-col items-center justify-center"
+        >
+          <img src={HeaderLogo} alt="headerLogo" className="h-6" />
+          <h3 className="text-xs tracking-tighter text-gray-700 font-bold">
+            Stone Ware House
+          </h3>
+        </Link>
         {/* --------------------------- */}
         {/* nav items  */}
         {/* --------------------------- */}
