@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import MyHelmet from "../MyHelmet/MyHelmet";
 const Home = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -10,6 +10,7 @@ const Home = () => {
   console.log(products);
   return (
     <div>
+      <MyHelmet title="Home" />
       {products.map((p) => (
         <div>
           <h2>{p.name}</h2>
