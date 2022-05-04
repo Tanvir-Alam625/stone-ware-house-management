@@ -8,7 +8,7 @@ const Header = () => {
   const location = useLocation();
   console.log(location);
   return (
-    <header className="py-[10px] bg-teal-400  sticky top-0 font-mono  overflow-x-hidden">
+    <header className="py-[10px] bg-teal-400  sticky top-0 font-mono  overflow-x-hidden z-10">
       <nav className="flex justify-between max-w-[1024px] lg:mx-auto md:mx-6 mx-2 ">
         <div className="nav-logo cursor-pointer">
           <h2 className="text-4xl font-mono font-bold capitalize">logo</h2>

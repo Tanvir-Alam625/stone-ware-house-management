@@ -9,10 +9,11 @@ import Contact from "./components/Contact/Contact";
 import Inventory from "./components/Inventory/Inventory";
 import ManageInventory from "./components/ManageInventory/ManageInventory";
 import SignUp from "./components/SignUp/SignUp";
+import SignIn from "./components/SignUp/SignIn";
 
 function App() {
   return (
-    <>
+    <div className="bg-[#F0F2F5]">
       <Header />
       {/* ------------------------ */}
       {/* My all Routes code  */}
@@ -25,12 +26,13 @@ function App() {
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/manage" element={<ManageInventory />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
 
         {/* Not Found Route  */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

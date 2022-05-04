@@ -1,0 +1,11 @@
+.input-name {
+  position: relative;
+}
+.input-name::before {
+  content: "";
+  position: absolute;
+  background-color: #2dd4bf;
+  height: 2px;
+  left: 0;
+  bottom: 15px;
+}

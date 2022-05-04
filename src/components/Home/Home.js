@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const Home = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("products.json")
+    fetch("http://localhost:5000/stonesHomePage")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
