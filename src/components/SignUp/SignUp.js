@@ -1,10 +1,21 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
 import GoogleImg from "../../img/Google-Icon-PNG-768x768-removebg-preview.png";
 import MyHelmet from "../MyHelmet/MyHelmet";
-import "./SignUp.css";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 const SignUp = () => {
   const [check, setCheck] = useState(false);
+  const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] =
+    useSignInWithGoogle(auth);
+  const navigate = useNavigate();
+  //google
+  if (userGoogle) {
+    navigate("/");
+  }
+  if (errorGoogle) {
+    console.error(errorGoogle);
+  }
   console.log(check);
   const handleFormSubmitData = (event) => {
     event.preventDefault();
@@ -120,7 +131,10 @@ const SignUp = () => {
           </Link>
         </div>
         <div className="signup-social w-full">
-          <button className="capitalize w-full justify-center border tex-sm md:text-xl rounded-md py-2 flex items-center">
+          <button
+            onClick={() => signInWithGoogle()}
+            className="capitalize w-full justify-center border tex-sm md:text-xl rounded-md py-2 flex items-center"
+          >
             <img src={GoogleImg} alt="GoogleImg" className="h-6 md:h-10 mr-2" />
             SignUp with Google
           </button>
