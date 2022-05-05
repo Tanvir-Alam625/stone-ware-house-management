@@ -23,7 +23,25 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.btn-hover {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.btn-hover::after {
+  content: "";
+  position: absolute;
+  background: #2dd4bf;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: 0;
+  z-index: -1;
+  transition: 300ms ease-in-out;
+}
+.btn-hover:hover::after {
+  right: 0;
+}
 .App-link {
   color: #61dafb;
 }

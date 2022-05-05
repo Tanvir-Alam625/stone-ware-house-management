@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Banner from "../Banner/Banner";
 import MyHelmet from "../MyHelmet/MyHelmet";
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -7,11 +8,12 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
-  console.log(products);
+  // console.log(products);
   return (
     <div>
       <MyHelmet title="Home" />
-      {products.map((p) => (
+      <Banner />
+      {/* {products.map((p) => (
         <div>
           <h2>{p.name}</h2>
           <h2>{p.supplier}</h2>
@@ -20,7 +22,7 @@ const Home = () => {
           <h2>{p.price}</h2>
           <img src={p.img} alt="product-img" />
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
