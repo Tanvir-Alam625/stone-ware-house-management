@@ -15,7 +15,7 @@ const Header = () => {
           className="nav-logo cursor-pointer flex flex-col items-center justify-center"
         >
           <img src={HeaderLogo} alt="headerLogo" className="h-6" />
-          <h3 className="text-xs tracking-tighter text-gray-700 font-bold">
+          <h3 className="text-xs tracking-tighter text-gray-700 z-10 font-bold">
             Stone Ware House
           </h3>
         </Link>

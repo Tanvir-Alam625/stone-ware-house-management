@@ -1,3 +1,10 @@
+:root {
+  --font-color: #2dd4bf;
+  --border-center: translateX(-50%);
+  --border-width: 10vw;
+  --brder-bttm: 0.5rem solid #2dd4bf;
+}
+
 .App {
   text-align: center;
 }
@@ -41,6 +48,31 @@
 }
 .btn-hover:hover::after {
   right: 0;
+}
+.section-heading {
+  color: #2dd4bf;
+  position: relative;
+  margin: 1rem;
+}
+
+.section-heading::before {
+  position: absolute;
+  content: "";
+  border-bottom: var(--brder-bttm);
+  width: var(--border-width);
+  top: -10%;
+  transform: var(--border-center);
+  left: 50%;
+}
+
+.section-heading::after {
+  transform: var(--border-center);
+  width: var(--border-width);
+  position: absolute;
+  border-bottom: var(--brder-bttm);
+  content: "";
+  bottom: -10%;
+  left: 50%;
 }
 .App-link {
   color: #61dafb;

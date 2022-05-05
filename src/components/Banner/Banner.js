@@ -63,7 +63,7 @@ const Banner = () => {
     }
   };
   return (
-    <div className="min-h-screen font-mono text-gray-600 ">
+    <section className=" font-mono text-gray-600 md:mb-12 ">
       <div className="">
         <div className="curoselItems relative flex flex-col items-center">
           <div
@@ -86,7 +86,7 @@ const Banner = () => {
           <img
             src={bannerItems[index]?.img}
             alt="slider"
-            className="h-full lg:h-[600px] md:h-[500px] min-w-full  blur-[1.5px]"
+            className="h-full lg:h-[600px] md:h-[500px] min-w-full  blur-[1.5px] object-cover"
             style={{ zIndex: 1 }}
           />
         </div>
@@ -94,18 +94,18 @@ const Banner = () => {
       <div className="slider-btn flex justify-center mt-1 mb-4">
         <button
           onClick={handleLeftBtn}
-          className="border shadow rounded-full p-1 mr-1 bg-white hover:bg-gray-300 duration-150 ease-in-out"
+          className="border shadow rounded-full p-1 mr-1 bg-white hover:bg-teal-100 duration-150 ease-in-out"
         >
           <ChevronLeftIcon className=" h-6 md:h-8 text-gray-600 " />
         </button>
         <button
           onClick={handleRightBtn}
-          className=" border shadow rounded-full p-1 bg-white  hover:bg-gray-300 duration-150 ease-in-out"
+          className=" border shadow rounded-full p-1 bg-white  hover:bg-teal-100 duration-150 ease-in-out"
         >
           <ChevronRightIcon className="h-6 md:h-8  text-gray-600" />
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 
