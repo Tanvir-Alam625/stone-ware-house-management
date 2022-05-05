@@ -6,7 +6,7 @@ import "./Header.css";
 const Header = () => {
   const [toggler, setToggler] = useState(false);
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   return (
     <header className="py-[10px] bg-teal-400  sticky top-0 font-mono  overflow-x-hidden z-20">
       <nav className="flex justify-between max-w-[1024px] lg:mx-auto md:mx-6 mx-2 ">

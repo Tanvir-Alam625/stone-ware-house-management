@@ -1,11 +1,17 @@
 import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Item = ({ data }) => {
   const { name, img, description, price, supllier, quantity, _id } = data;
+  const navigate = useNavigate();
   return (
-    <div className="bg-white  border shadow rounded-md mb-6 ">
-      <img src={img} alt="item-img" className="rounded-t-md" />
+    <div className="bg-white  border shadow rounded-md mb-6  hover:shadow-xl">
+      <img
+        src={img}
+        alt="item-img"
+        className="w-full object-cover rounded-t-md"
+      />
       <div className="item-info p-2">
         <h2 className="md:text-3xl md:my-4 my-2 tracking-tighter text-2xl font-bold ">
           {name}
@@ -30,9 +36,12 @@ const Item = ({ data }) => {
         <p className="text-xl my-2">
           Price: <span className="text-teal-300">${price}</span>
         </p>
-        <button className="btn-hover flex py-2 items-center px-4 rounded-md shadow  border text-teal-400 hover:text-white duration-300 ease-in-out   md:text-xl text-sm">
+        <button
+          onClick={() => navigate(`/inventory/${_id}`)}
+          className="btn-hover flex py-1 mb-4 items-center px-4 rounded-md shadow  border text-teal-400 hover:text-white duration-300 ease-in-out   md:text-xl text-sm"
+        >
           Update
-          <ArrowNarrowRightIcon className="h-6 ml-2" />
+          <ArrowNarrowRightIcon className="h-4 ml-2" />
         </button>
       </div>
     </div>

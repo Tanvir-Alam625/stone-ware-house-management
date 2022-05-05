@@ -55,6 +55,10 @@
   margin: 1rem;
 }
 
+.img-animation {
+  animation: zoom 2s infinite;
+  overflow: hidden;
+}
 .section-heading::before {
   position: absolute;
   content: "";
@@ -78,11 +82,17 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes zoom {
+  0% {
+    transform: scale(0.9);
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(0.9);
   }
 }

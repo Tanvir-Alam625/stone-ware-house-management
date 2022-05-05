@@ -1,4 +1,6 @@
+import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Item from "./Item/Item";
 
 const InventoryForHomePage = () => {
@@ -17,6 +19,14 @@ const InventoryForHomePage = () => {
         {products.map((product) => (
           <Item key={product._id} data={product} />
         ))}
+      </div>
+      <div className="flex justify-center">
+        <Link
+          to="/inventory"
+          className="btn-hover flex items-center  border hover:text-white duration-500 ease-in-out border-teal-400 text-teal-400  text-sm md:text-xl  mx-auto py-1 px-4 shadow rounded-md"
+        >
+          View More <ArrowNarrowRightIcon className="h-4 ml-2" />
+        </Link>
       </div>
     </section>
   );

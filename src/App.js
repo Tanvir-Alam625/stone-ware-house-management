@@ -12,6 +12,7 @@ import SignUp from "./components/SignUp/SignUp";
 import SignIn from "./components/SignUp/SignIn";
 import Reset from "./components/SignUp/Reset";
 import { HelmetProvider } from "react-helmet-async";
+import InventoryDetail from "./components/Inventory/InventoryDetail/InventoryDetail";
 function App() {
   return (
     <div className="bg-[#F0F2F5]">
@@ -30,6 +31,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/reset" element={<Reset />} />
+          <Route path="/inventory/:id" element={<InventoryDetail />} />
 
           {/* Not Found Route  */}
           <Route path="*" element={<NotFound />} />
