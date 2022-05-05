@@ -13,7 +13,7 @@ const InventoryForHomePage = () => {
       <h1 className="section-heading md:text-6xl text-center text-4xl font-bold tracking-tighter my-6 ">
         Our Items
       </h1>
-      <div className="inventory-items mt-8 mb-8 md:mt-12 md:mb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+      <div className="inventory-items mt-8 mb-8 md:mt-12 md:mb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 px-4">
         {products.map((product) => (
           <Item key={product._id} data={product} />
         ))}
