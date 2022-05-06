@@ -7,19 +7,25 @@ import "react-toastify/dist/ReactToastify.css";
 const InventoryDetail = () => {
   const { id } = useParams();
   const [stone, setStone] = useState({});
-  const [btnSpinner, setBtnSpinner] = useState(false);
+  // for delivery btn
+  const [deliverySpinner, setDeliverySpinner] = useState(false);
+  //for stone quantity set
+  const [setSpinner, setSetSpinner] = useState(false);
   useEffect(() => {
     fetch(`http://localhost:5000/inventoryDetail/${id}`)
       .then((res) => res.json())
       .then((data) => setStone(data));
-  }, [id]);
-
-  const handleDeliveryBtn = () => {
-    const url = `http://localhost:5000/inventoryDetail/${id}`;
-    const decreaseQuantity = stone.quantity - 1;
-    stone.quantity = decreaseQuantity;
-    console.log(decreaseQuantity);
-    setBtnSpinner(true);
+  }, [id, stone]);
+  // --------------------------
+  //set  delivery quantity for form
+  // --------------------------
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    const newQuantity = parseInt(event.target.quantity.value);
+    stone.quantity = newQuantity;
+    console.log(newQuantity);
+    setSetSpinner(true);
+    const url = `http://localhost:5000/setQuantity/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -29,17 +35,42 @@ const InventoryDetail = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        toast.success("Update Successfully! ✔", {
+        toast.success("Set Quantity Successfully! ✔", {
           position: "bottom-left",
           autoClose: 3000,
         });
-        setBtnSpinner(false);
+        setSetSpinner(false);
+      });
+  };
+  // --------------------------
+  //delivery stone quantity
+  // --------------------------
+  const handleDeliveryBtn = () => {
+    const url = `http://localhost:5000/delivery/${id}`;
+    const decreaseQuantity = stone.quantity - 1;
+    stone.quantity = decreaseQuantity;
+    console.log(decreaseQuantity);
+    setDeliverySpinner(true);
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(stone),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        toast.success("Update Quantity Successfully! ✔", {
+          position: "bottom-left",
+          autoClose: 3000,
+        });
+        setDeliverySpinner(false);
       });
   };
 
   const { name, img, price, quantity, supllier, description } = stone;
   return (
-    <section className="min-h-screen max-w-[1100px] font-mono text-gray-600 mx-auto md:my-12 my-6">
+    <section className="min-h-screen max-w-[1100px] font-mono text-gray-600 mx-auto md:my-12 my-6 px-2">
       {/* // notification  */}
       <ToastContainer />
 
@@ -64,12 +95,12 @@ const InventoryDetail = () => {
           <div className="delivered  py-4 flex justify-start ">
             <button
               onClick={handleDeliveryBtn}
-              disabled={btnSpinner ? true : false}
+              disabled={deliverySpinner ? true : false}
               className={`flex md:text-2xl text-xl overflow-hidden py-2 px-4 md:px-12 rounded-md border shadow-lg  items-center bg-white text-teal-500 hover:opacity-[0.7] duration-150 ease-in-out hover:bg-teal-50${
-                btnSpinner ? "cursor-not-allowed" : "cursor-pointer"
+                deliverySpinner ? "cursor-not-allowed" : "cursor-pointer"
               }`}
             >
-              {btnSpinner ? (
+              {deliverySpinner ? (
                 <div class="lds-ellipsis cursor-progress">
                   <div></div>
                   <div></div>
@@ -94,7 +125,10 @@ const InventoryDetail = () => {
       </div>
 
       <div className="set-stone-quantity my-4 p-4 md:my-8 md:py-8  flex justify-center items-center">
-        <form className="bg-[#FFFFFF] p-2 md:p-4 shadow-xl rounded-md">
+        <form
+          onSubmit={handleFormSubmit}
+          className="bg-[#FFFFFF] p-2 md:p-4 shadow-xl rounded-md"
+        >
           <div className="input-group w-full my-3">
             <label
               htmlFor="quantity"
@@ -119,9 +153,18 @@ const InventoryDetail = () => {
           <div className=" mt-12 btn items-end">
             <button
               type="submit"
+              disabled={setSpinner ? true : false}
               className=" shadow-lg btn-hover w-full px-6 md:px-12 duration-200 ease-in-out py-2 rounded-md text-sm md:text-xl font-bol text-teal-400 hover:text-white border-2 border-teal-400 cursor-pointer"
             >
-              Set
+              {setSpinner ? (
+                <div class="lds-ellipsis cursor-progress">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              ) : (
+                <>Set</>
+              )}
             </button>
           </div>
         </form>
