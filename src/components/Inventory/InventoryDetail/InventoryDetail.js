@@ -61,6 +61,28 @@ const InventoryDetail = () => {
           <p className="text-xl md:text-2xl  font-light">
             Price: <span className="text-teal-400">${price}</span>
           </p>
+          <div className="delivered  py-4 flex justify-start ">
+            <button
+              onClick={handleDeliveryBtn}
+              disabled={btnSpinner ? true : false}
+              className={`flex md:text-2xl text-xl overflow-hidden py-2 px-4 md:px-12 rounded-md border shadow-lg  items-center bg-white text-teal-500 hover:opacity-[0.7] duration-150 ease-in-out hover:bg-teal-50${
+                btnSpinner ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
+            >
+              {btnSpinner ? (
+                <div class="lds-ellipsis cursor-progress">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              ) : (
+                <>
+                  Delivered
+                  <img src={delivery} alt="delivery" className="h-6 ml-2" />
+                </>
+              )}
+            </button>
+          </div>
         </div>
         <div className="detail-img md:w-[50%] w-full flex justify-center mb-8 md:mb-0 md:justify-end items-center order-1 md:order-2">
           <img
@@ -70,27 +92,39 @@ const InventoryDetail = () => {
           />
         </div>
       </div>
-      <div className="delivered my-12 p-4 flex justify-center ">
-        <button
-          onClick={handleDeliveryBtn}
-          disabled={btnSpinner ? true : false}
-          className={`flex md:text-2xl text-xl overflow-hidden py-2 px-4 md:px-12 rounded-md border shadow-lg  items-center bg-white text-teal-500 hover:opacity-[0.7] duration-150 ease-in-out hover:bg-teal-50${
-            btnSpinner ? "cursor-not-allowed" : "cursor-pointer"
-          }`}
-        >
-          {btnSpinner ? (
-            <div class="lds-ellipsis cursor-progress">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          ) : (
-            <>
-              Delivered
-              <img src={delivery} alt="delivery" className="h-6 ml-2" />
-            </>
-          )}
-        </button>
+
+      <div className="set-stone-quantity my-4 p-4 md:my-8 md:py-8  flex justify-center items-center">
+        <form className="bg-[#FFFFFF] p-2 md:p-4 shadow-xl rounded-md">
+          <div className="input-group w-full my-3">
+            <label
+              htmlFor="quantity"
+              className="  text-xl md:text-4xl font-semibold text-teal-400"
+            >
+              Set Stone Quantity
+            </label>
+            <br />
+            <br />
+            <br />
+            <input
+              type="number"
+              name="quantity"
+              id="quantity"
+              max={500}
+              className="w-full outline-0 px-2 border-b-2 bg-transparent border-gray-400 focus:border-teal-500  valid:border-teal-500 text-sm pt-1 md:text-xl text-teal-500"
+              required
+              placeholder="Enter Your Value"
+              autoComplete="off"
+            />
+          </div>
+          <div className=" mt-12 btn items-end">
+            <button
+              type="submit"
+              className=" shadow-lg btn-hover w-full px-6 md:px-12 duration-200 ease-in-out py-2 rounded-md text-sm md:text-xl font-bol text-teal-400 hover:text-white border-2 border-teal-400 cursor-pointer"
+            >
+              Set
+            </button>
+          </div>
+        </form>
       </div>
     </section>
   );

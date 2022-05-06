@@ -28,7 +28,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/inventory" element={<Inventory />} />
-          <Route path="/manage" element={<ManageInventory />} />
+          <Route
+            path="/manage"
+            element={
+              <RequireAuth>
+                <ManageInventory />
+              </RequireAuth>
+            }
+          />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/reset" element={<Reset />} />
