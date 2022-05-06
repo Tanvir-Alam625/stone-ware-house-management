@@ -5,13 +5,13 @@ import Spinner from "../Spinner/Spinner";
 import Item from "./Item/Item";
 
 const InventoryForHomePage = () => {
-  const [products, setProducts] = useState([]);
+  const [stone, setStone] = useState([]);
   const [spinner, setSpinner] = useState(true);
   useEffect(() => {
     fetch("http://localhost:5000/stonesHomePage")
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data);
+        setStone(data);
         setSpinner(false);
       });
   }, []);
@@ -25,7 +25,7 @@ const InventoryForHomePage = () => {
             Our Items
           </h1>
           <div className="inventory-items mt-8 mb-8 md:mt-12 md:mb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 px-4">
-            {products.map((product) => (
+            {stone.map((product) => (
               <Item key={product._id} data={product} />
             ))}
           </div>

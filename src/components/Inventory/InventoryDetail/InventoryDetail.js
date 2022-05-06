@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import delivery from "../../../img/truck8.png";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../../Spinner/Spinner";
+import MyHelmet from "../../MyHelmet/MyHelmet";
 
 const InventoryDetail = () => {
   const { id } = useParams();
@@ -29,7 +30,7 @@ const InventoryDetail = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const newQuantity = parseInt(event.target.quantity.value);
-    stone.quantity = newQuantity;
+    stone.quantity = stone.quantity + newQuantity;
     console.log(newQuantity);
     setSetSpinner(true);
     const url = `http://localhost:5000/setQuantity/${id}`;
@@ -96,6 +97,9 @@ const InventoryDetail = () => {
         <Spinner />
       ) : (
         <section className="min-h-screen max-w-[1100px] font-mono text-gray-600 mx-auto md:my-12 my-6 px-2">
+          {/* page title  */}
+          <MyHelmet title="Details" />
+
           {/* // notification  */}
           <ToastContainer />
 
@@ -169,6 +173,7 @@ const InventoryDetail = () => {
                   name="quantity"
                   id="quantity"
                   max={500}
+                  min={1}
                   className="w-full outline-0 px-2 border-b-2 bg-transparent border-gray-400 focus:border-teal-500  valid:border-teal-500 text-sm pt-1 md:text-xl text-teal-500"
                   required
                   placeholder="Enter Your Value"

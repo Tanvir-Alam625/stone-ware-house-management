@@ -10,7 +10,7 @@ const Item = ({ data }) => {
       <img
         src={img}
         alt="item-img"
-        className="w-full object-cover rounded-t-md"
+        className="w-full object-fill rounded-t-md h-[350px]"
       />
       <div className="item-info p-2">
         <h2 className="md:text-3xl md:my-4 my-2 tracking-tighter text-2xl font-bold ">
