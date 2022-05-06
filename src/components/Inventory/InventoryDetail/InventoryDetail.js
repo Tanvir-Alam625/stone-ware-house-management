@@ -2,21 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import delivery from "../../../img/truck8.png";
+import "react-toastify/dist/ReactToastify.css";
 
 const InventoryDetail = () => {
   const { id } = useParams();
   const [stone, setStone] = useState({});
+  const [btnSpinner, setBtnSpinner] = useState(false);
   useEffect(() => {
     fetch(`http://localhost:5000/inventoryDetail/${id}`)
       .then((res) => res.json())
       .then((data) => setStone(data));
-  }, [id, stone]);
+  }, [id]);
 
   const handleDeliveryBtn = () => {
     const url = `http://localhost:5000/inventoryDetail/${id}`;
     const decreaseQuantity = stone.quantity - 1;
     stone.quantity = decreaseQuantity;
     console.log(decreaseQuantity);
+    setBtnSpinner(true);
     fetch(url, {
       method: "PUT",
       headers: {
@@ -26,8 +29,11 @@ const InventoryDetail = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
-        toast("Successfully delivered! ");
+        toast.success("Update Successfully! ✔", {
+          position: "bottom-left",
+          autoClose: 3000,
+        });
+        setBtnSpinner(false);
       });
   };
 
@@ -67,10 +73,23 @@ const InventoryDetail = () => {
       <div className="deliverd my-12 p-4 flex justify-center ">
         <button
           onClick={handleDeliveryBtn}
-          className="flex md:text-2xl text-xl py-2 px-4 md:px-12 rounded-md border shadow-lg  items-center bg-white text-teal-500 hover:opacity-[0.7] duration-150 ease-in-out hover:bg-teal-50"
+          disabled={btnSpinner ? true : false}
+          className={`flex md:text-2xl text-xl overflow-hidden py-2 px-4 md:px-12 rounded-md border shadow-lg  items-center bg-white text-teal-500 hover:opacity-[0.7] duration-150 ease-in-out hover:bg-teal-50${
+            btnSpinner ? "cursor-not-allowed" : "cursor-pointer"
+          }`}
         >
-          Delivered
-          <img src={delivery} alt="delivery" className="h-6 ml-2" />
+          {btnSpinner ? (
+            <div class="lds-ellipsis cursor-progress">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          ) : (
+            <>
+              Delivered
+              <img src={delivery} alt="delivery" className="h-6 ml-2" />
+            </>
+          )}
         </button>
       </div>
     </section>

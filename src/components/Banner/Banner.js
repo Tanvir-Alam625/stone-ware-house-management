@@ -3,9 +3,6 @@ import slider1 from "../../img/banner/banner1.jpg";
 import slider2 from "../../img/banner/banner2 (1).jpg";
 import slider3 from "../../img/banner/banner3.jpg";
 import slider4 from "../../img/banner/banner4.jpg";
-import slider5 from "../../img/banner/banner5.jpg";
-import slider6 from "../../img/banner/banner2 (2).jpg";
-import slider7 from "../../img/banner/banner2 (3).jpg";
 import {
   ArrowNarrowRightIcon,
   ChevronLeftIcon,
