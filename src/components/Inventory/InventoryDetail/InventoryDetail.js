@@ -10,9 +10,15 @@ const InventoryDetail = () => {
       .then((res) => res.json())
       .then((data) => setStone(data));
   }, [id]);
+
   const handleDeliveryBtn = () => {
-    // fetch();
+    const url = `http://localhost:5000/inventoryDetail/${id}`;
+    fetch(url, {
+      method: "PUT",
+    });
   };
+  useEffect(() => {}, [id]);
+
   const { name, img, price, quantity, supllier, description } = stone;
   return (
     <section className="min-h-screen max-w-[1100px] font-mono text-gray-600 mx-auto md:my-12 my-6">
