@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useLocation, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
+import { signOut } from "firebase/auth";
 import HeaderLogo from "../../img/logo-removebg-preview.png";
 import "./Header.css";
 const Header = () => {
   const [toggler, setToggler] = useState(false);
   const location = useLocation();
+  const [user] = useAuthState(auth);
   // console.log(location);
   return (
     <header className="py-[10px] bg-teal-400  sticky top-0 font-mono  overflow-x-hidden z-20">
@@ -88,36 +92,47 @@ const Header = () => {
                 Inventory
               </Link>
             </li>
-            <li
-              onClick={() => setToggler(!toggler)}
-              className="relative pb-4 md:pb-8 lg:pb-0 lg:mb-0 lg:ml-6   text-xl tracking-tight  text-gray-600 hover:text-gray-900 duration-200 ease-linear cursor-pointer"
-            >
-              <Link
-                className={`active-link hover:text-gray-900 px-2 lg:px-0 ${
-                  location.pathname === "/manage"
-                    ? "active text-gray-900 "
-                    : "text-gray-600"
-                }`}
-                to="/manage"
+            {user && (
+              <li
+                onClick={() => setToggler(!toggler)}
+                className="relative pb-4 md:pb-8 lg:pb-0 lg:mb-0 lg:ml-6   text-xl tracking-tight  text-gray-600 hover:text-gray-900 duration-200 ease-linear cursor-pointer"
               >
-                Manage Inventory
-              </Link>
-            </li>
-            <li
-              onClick={() => setToggler(!toggler)}
-              className="relative pb-4 md:pb-8 lg:pb-0 lg:mb-0 lg:ml-6   text-xl tracking-tight  text-gray-600 hover:text-gray-900 duration-200 ease-linear cursor-pointer"
-            >
-              <Link
-                className={`active-link hover:text-gray-900 px-2 lg:px-0 ${
-                  location.pathname === "/signup"
-                    ? "active text-gray-900 "
-                    : "text-gray-600"
-                }`}
-                to="/signup"
+                <Link
+                  className={`active-link hover:text-gray-900 px-2 lg:px-0 ${
+                    location.pathname === "/manage"
+                      ? "active text-gray-900 "
+                      : "text-gray-600"
+                  }`}
+                  to="/manage"
+                >
+                  Manage Inventory
+                </Link>
+              </li>
+            )}
+            {user ? (
+              <button
+                onClick={() => signOut(auth)}
+                className="py-1 px-3 border rounded-md  text-xl"
               >
-                SignUp
-              </Link>
-            </li>
+                SignOut
+              </button>
+            ) : (
+              <li
+                onClick={() => setToggler(!toggler)}
+                className="relative pb-4 md:pb-8 lg:pb-0 lg:mb-0 lg:ml-6   text-xl tracking-tight  text-gray-600 hover:text-gray-900 duration-200 ease-linear cursor-pointer"
+              >
+                <Link
+                  className={`active-link hover:text-gray-900 px-2 lg:px-0 ${
+                    location.pathname === "/signup"
+                      ? "active text-gray-900 "
+                      : "text-gray-600"
+                  }`}
+                  to="/signup"
+                >
+                  SignUp
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
         <div

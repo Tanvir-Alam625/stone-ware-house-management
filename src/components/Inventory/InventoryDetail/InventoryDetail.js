@@ -70,7 +70,7 @@ const InventoryDetail = () => {
           />
         </div>
       </div>
-      <div className="deliverd my-12 p-4 flex justify-center ">
+      <div className="delivered my-12 p-4 flex justify-center ">
         <button
           onClick={handleDeliveryBtn}
           disabled={btnSpinner ? true : false}
