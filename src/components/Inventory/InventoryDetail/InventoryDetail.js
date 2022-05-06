@@ -47,6 +47,7 @@ const InventoryDetail = () => {
           position: "bottom-left",
           autoClose: 3000,
         });
+        event.target.quantity.value = "";
         setSetSpinner(false);
       });
   };
