@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import slider1 from "../../img/banner/banner1.jpg";
-import slider2 from "../../img/banner/banner2 (1).jpg";
-import slider3 from "../../img/banner/banner3.jpg";
+import slider2 from "../../img/banner/banner.jpg";
+import slider3 from "../../img/banner/banner2 (1).jpg";
 import slider4 from "../../img/banner/banner4.jpg";
 import {
   ArrowNarrowRightIcon,
@@ -83,7 +83,7 @@ const Banner = () => {
           <img
             src={bannerItems[index]?.img}
             alt="slider"
-            className="h-full lg:h-[600px] md:h-[500px] min-w-full  blur-[1.5px] object-cover"
+            className="object-fill h-full lg:h-[600px] md:h-[500px] min-w-full  blur-[1.5px] "
             style={{ zIndex: 1 }}
           />
         </div>
