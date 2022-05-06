@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import delivery from "../../../img/truck8.png";
 
 const InventoryDetail = () => {
@@ -9,19 +10,33 @@ const InventoryDetail = () => {
     fetch(`http://localhost:5000/inventoryDetail/${id}`)
       .then((res) => res.json())
       .then((data) => setStone(data));
-  }, [id]);
+  }, [id, stone]);
 
   const handleDeliveryBtn = () => {
     const url = `http://localhost:5000/inventoryDetail/${id}`;
+    const decreaseQuantity = stone.quantity - 1;
+    stone.quantity = decreaseQuantity;
+    console.log(decreaseQuantity);
     fetch(url, {
       method: "PUT",
-    });
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(stone),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        toast("Successfully delivered! ");
+      });
   };
-  useEffect(() => {}, [id]);
 
   const { name, img, price, quantity, supllier, description } = stone;
   return (
     <section className="min-h-screen max-w-[1100px] font-mono text-gray-600 mx-auto md:my-12 my-6">
+      {/* // notification  */}
+      <ToastContainer />
+
       {/* ------------------ */}
       {/* details inventory  */}
       {/* ------------------ */}
