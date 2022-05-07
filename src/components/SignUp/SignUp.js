@@ -125,9 +125,9 @@ const SignUp = () => {
           </div>
           <br></br>
           <p className="text-red-400 md:text-xl text-sm ">
-            {errorMessage}
-            {error}
-            {errorGoogle}
+            {errorMessage?.message}
+            {error?.message}
+            {errorGoogle?.message}
           </p>
           <button
             type="submit"

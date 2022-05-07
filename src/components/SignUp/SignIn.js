@@ -17,6 +17,9 @@ const SignIn = () => {
   if (user || userGoogle) {
     navigate("/");
   }
+  if (error || errorGoogle) {
+    console.error(error, errorGoogle);
+  }
   //sign in with email password
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -64,9 +67,9 @@ const SignIn = () => {
               autoComplete="off"
             />
           </div>
-          <p className="text-red-400 Md:text-xl text-sm ">
-            {error}
-            {errorGoogle}
+          <p className="text-red-400 md:text-xl text-sm ">
+            {error?.message}
+            {errorGoogle?.message}
           </p>
           <button
             type="submit"
