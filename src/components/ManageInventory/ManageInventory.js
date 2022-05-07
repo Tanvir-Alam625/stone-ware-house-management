@@ -1,12 +1,15 @@
 import { DocumentAddIcon } from "@heroicons/react/solid";
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 import MyHelmet from "../MyHelmet/MyHelmet";
 import Spinner from "../Spinner/Spinner";
 import ManageItem from "./ManageItem";
 
 const ManageInventory = () => {
+  const [user, loading, error] = useAuthState(auth);
   const [stones, setStones] = useState([]);
   const [restoreStone, setRestoreStone] = useState(false);
   const [spinnerCondition, setSpinnerCondition] = useState(true);
@@ -42,6 +45,7 @@ const ManageInventory = () => {
     }
   };
 
+  console.log(user);
   return (
     <>
       {/* page title  */}

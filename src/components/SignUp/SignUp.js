@@ -1,38 +1,46 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import GoogleImg from "../../img/Google-Icon-PNG-768x768-removebg-preview.png";
 import MyHelmet from "../MyHelmet/MyHelmet";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 const SignUp = () => {
   const [check, setCheck] = useState(false);
   const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] =
     useSignInWithGoogle(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, errorUpdate] = useUpdateProfile(auth);
   const [errorMessage, setErrorMessage] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const navigate = useNavigate();
-  // signup with google
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  // navigate current route
   if (userGoogle || user) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
 
   if (errorGoogle) {
     console.error(errorGoogle);
   }
-  const handleFormSubmitData = (event) => {
+  const handleFormSubmitData = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
+    setDisplayName(name);
     if (password === confirmPassword) {
       console.log(name, email, password, confirmPassword);
       createUserWithEmailAndPassword(email, password);
       setErrorMessage(" ");
+      updateProfile(displayName);
     } else {
       setErrorMessage("Your Password Not match! ");
     }
@@ -138,7 +146,7 @@ const SignUp = () => {
                 : "bg-gray-400 cursor-not-allowed"
             }`}
           >
-            {loading || loadingGoogle ? (
+            {loading || loadingGoogle || updating ? (
               <div class="lds-ellipsis cursor-progress">
                 <div></div>
                 <div></div>

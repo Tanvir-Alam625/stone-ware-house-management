@@ -5,7 +5,7 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleImg from "../../img/Google-Icon-PNG-768x768-removebg-preview.png";
 
 const SignIn = () => {
@@ -14,9 +14,14 @@ const SignIn = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const navigate = useNavigate();
-  if (user || userGoogle) {
-    navigate("/");
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  // navigate current route
+  if (userGoogle || user) {
+    navigate(from, { replace: true });
   }
+
   if (error || errorGoogle) {
     console.error(error, errorGoogle);
   }
