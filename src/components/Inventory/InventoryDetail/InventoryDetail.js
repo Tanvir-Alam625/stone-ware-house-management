@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import delivery from "../../../img/truck8.png";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../../Spinner/Spinner";
@@ -100,9 +100,6 @@ const InventoryDetail = () => {
         <section className="min-h-screen max-w-[1100px] font-mono text-gray-600 mx-auto md:my-12 my-6 px-2">
           {/* page title  */}
           <MyHelmet title="Details" />
-
-          {/* // notification  */}
-          <ToastContainer />
 
           {/* ------------------ */}
           {/* details inventory  */}

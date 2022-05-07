@@ -15,11 +15,14 @@ import { HelmetProvider } from "react-helmet-async";
 import InventoryDetail from "./components/Inventory/InventoryDetail/InventoryDetail";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import AddItem from "./components/AddItem/AddItem";
+import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div className="bg-[#F0F2F5]">
       <HelmetProvider>
         <Header />
+        {/* toast container  */}
+        <ToastContainer />
         {/* ------------------------ */}
         {/* My all Routes code  */}
         {/* ------------------------ */}

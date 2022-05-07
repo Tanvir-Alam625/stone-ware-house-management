@@ -8,7 +8,7 @@ const Item = ({ data }) => {
   return (
     <div className="bg-white  border shadow rounded-md mb-6  hover:shadow-xl">
       <img
-        src={img}
+        src={img ? img : ""}
         alt="item-img"
         className="w-full object-fill rounded-t-md h-[350px]"
       />
@@ -17,13 +17,13 @@ const Item = ({ data }) => {
           {name}
         </h2>
         <h4 className="text-1xl font-semibold tracking-tighter my-2">
-          Supplier: {supllier}
+          Supplier: {supllier ? supllier : ""}
         </h4>
         <small
           title={description}
           className="tracking-tighter text-sx md:text-sm"
         >
-          {description.length > 100
+          {description?.length > 100
             ? description.slice(0, 100) + "..."
             : description}
         </small>
@@ -34,7 +34,7 @@ const Item = ({ data }) => {
           </span>
         </p>
         <p className="text-xl my-2">
-          Price: <span className="text-teal-300">${price}</span>
+          Price: <span className="text-teal-300">${price ? price : "00"}</span>
         </p>
         <button
           onClick={() => navigate(`/inventory/${_id}`)}
