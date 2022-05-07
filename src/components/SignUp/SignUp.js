@@ -26,9 +26,9 @@ const SignUp = () => {
     navigate(from, { replace: true });
   }
 
-  if (errorGoogle) {
-    console.error(errorGoogle);
-  }
+  //----------------------
+  // email password create account firebase auth handle function
+  //----------------------
   const handleFormSubmitData = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;
@@ -36,11 +36,12 @@ const SignUp = () => {
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
     setDisplayName(name);
+    //condition
     if (password === confirmPassword) {
       console.log(name, email, password, confirmPassword);
       createUserWithEmailAndPassword(email, password);
       setErrorMessage(" ");
-      updateProfile(displayName);
+      await updateProfile(displayName);
     } else {
       setErrorMessage("Your Password Not match! ");
     }
