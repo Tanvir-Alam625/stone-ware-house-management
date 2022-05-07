@@ -3,22 +3,39 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import GoogleImg from "../../img/Google-Icon-PNG-768x768-removebg-preview.png";
 import MyHelmet from "../MyHelmet/MyHelmet";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 const SignUp = () => {
   const [check, setCheck] = useState(false);
   const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] =
     useSignInWithGoogle(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-  //google
-  if (userGoogle) {
+  // signup with google
+  if (userGoogle || user) {
     navigate("/");
   }
+
   if (errorGoogle) {
     console.error(errorGoogle);
   }
-  console.log(check);
   const handleFormSubmitData = (event) => {
     event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const confirmPassword = event.target.confirmPassword.value;
+    if (password === confirmPassword) {
+      console.log(name, email, password, confirmPassword);
+      createUserWithEmailAndPassword(email, password);
+      setErrorMessage(" ");
+    } else {
+      setErrorMessage("Your Password Not match! ");
+    }
   };
   // input style
   const inputStyle =
@@ -58,7 +75,7 @@ const SignUp = () => {
               type="email"
               name="email"
               id="email"
-              autoComplete="off"
+              // autoComplete="off"
               required
               placeholder="Your Answer"
               className={inputStyle}
@@ -80,14 +97,14 @@ const SignUp = () => {
             />
           </div>
           <div className="form-group w-full my-3">
-            <label htmlFor="confirm-password" className=" text-sm md:text-xl">
+            <label htmlFor="confirmPassword" className=" text-sm md:text-xl">
               Confirm Password
             </label>
             <br />
             <input
               type="password"
-              name="confirm-password"
-              id="confirm-password"
+              name="confirmPassword"
+              id="confirmPassword"
               className={inputStyle}
               required
               placeholder="****"
@@ -107,6 +124,11 @@ const SignUp = () => {
             </label>
           </div>
           <br></br>
+          <p className="text-red-400 md:text-xl text-sm ">
+            {errorMessage}
+            {error}
+            {errorGoogle}
+          </p>
           <button
             type="submit"
             disabled={!check ? true : false}
@@ -116,7 +138,15 @@ const SignUp = () => {
                 : "bg-gray-400 cursor-not-allowed"
             }`}
           >
-            Sign Up
+            {loading || loadingGoogle ? (
+              <div class="lds-ellipsis cursor-progress">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            ) : (
+              <>Sign Up</>
+            )}
           </button>
         </form>
         <div className="w-full my-3 flex justify-between">
