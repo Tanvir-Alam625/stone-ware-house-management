@@ -8,6 +8,7 @@ import ManageItem from "./ManageItem";
 const ManageInventory = () => {
   const [stones, setStones] = useState([]);
   const [restoreStone, setRestoreStone] = useState(false);
+  const navigate = useNavigate();
   //---------------------------
   //data load
   //---------------------------
@@ -36,7 +37,6 @@ const ManageInventory = () => {
     }
   };
 
-  const navigate = useNavigate();
   return (
     <section className="max-w-[1100px] mx-auto font-mono  px-2">
       {/* page title  */}
