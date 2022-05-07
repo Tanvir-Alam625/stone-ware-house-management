@@ -14,6 +14,7 @@ import Reset from "./components/SignUp/Reset";
 import { HelmetProvider } from "react-helmet-async";
 import InventoryDetail from "./components/Inventory/InventoryDetail/InventoryDetail";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
+import AddItem from "./components/AddItem/AddItem";
 function App() {
   return (
     <div className="bg-[#F0F2F5]">
@@ -28,6 +29,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/inventory" element={<Inventory />} />
+          <Route
+            path="/add"
+            element={
+              <RequireAuth>
+                <AddItem />
+              </RequireAuth>
+            }
+          />
           <Route
             path="/manage"
             element={

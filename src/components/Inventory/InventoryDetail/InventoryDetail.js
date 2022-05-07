@@ -164,7 +164,7 @@ const InventoryDetail = () => {
                   htmlFor="quantity"
                   className="  text-xl md:text-4xl font-semibold text-teal-400"
                 >
-                  Set Stone Quantity
+                  Restock Stone
                 </label>
                 <br />
                 <br />
@@ -194,7 +194,7 @@ const InventoryDetail = () => {
                       <div></div>
                     </div>
                   ) : (
-                    <>Set</>
+                    <>Restock</>
                   )}
                 </button>
               </div>

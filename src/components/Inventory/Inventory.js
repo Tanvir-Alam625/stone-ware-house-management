@@ -8,6 +8,7 @@ const Inventory = () => {
   const [stone, setStone] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [pagination, setPagination] = useState(0);
+  //DBS data Count Effect
   useEffect(() => {
     const url = "http://localhost:5000/countData";
     fetch(url)
@@ -17,6 +18,7 @@ const Inventory = () => {
         setPageCount(pages);
       });
   }, []);
+  // data load from mongodb server with pagination
   useEffect(() => {
     const url = `http://localhost:5000/inventory?page=${pagination}`;
     fetch(url)
