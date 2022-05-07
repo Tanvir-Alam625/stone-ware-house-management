@@ -41,7 +41,7 @@ const SignUp = () => {
   const inputStyle =
     " w-full outline-0 px-2 border-b-2 border-gray-400 focus:border-teal-500  valid:border-teal-500 text-sm pt-1 md:text-xl text-teal-500";
   return (
-    <div className="max-w-[1100px] font-mono text-gray-600 mx-auto min-h-screen flex justify-center items-center px-2">
+    <section className="max-w-[1100px] font-mono text-gray-600 mx-auto min-h-screen flex justify-center items-center px-2">
       <MyHelmet title="signup" />
       <div className="form w-full md:w-2/3 lg:w-2/5 flex flex-col items-center bg-white my-4 rounded-md shadow-md border px-4 md:px-6 lg:px-6 py-4 lg:py-8">
         <h2 className="text-2xl md:text-4xl font-bold  lg:text-6xl my-4  lg:my-8">
@@ -170,7 +170,7 @@ const SignUp = () => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
