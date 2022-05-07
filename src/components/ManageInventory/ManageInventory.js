@@ -1,17 +1,48 @@
 import { DocumentAddIcon } from "@heroicons/react/solid";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useDataLoad from "../../hooks/useDataLoad";
+import { toast, ToastContainer } from "react-toastify";
 import MyHelmet from "../MyHelmet/MyHelmet";
 import ManageItem from "./ManageItem";
 
 const ManageInventory = () => {
-  const { stones, setStones } = useDataLoad();
+  const [stones, setStones] = useState([]);
+  const [restoreStone, setRestoreStone] = useState(false);
+  //---------------------------
+  //data load
+  //---------------------------
+  useEffect(() => {
+    const url = "http://localhost:5000/manageInventory";
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setStones(data));
+  }, [restoreStone]);
+  //------------------------------
+  // delete function
+  //------------------------------
+  const handleDeleteItem = (id) => {
+    const condition = window.confirm("Are you sure!");
+    const url = `http://localhost:5000/stone/${id}`;
+    if (condition) {
+      fetch(url, { method: "DELETE" })
+        .then((res) => res.json)
+        .then((result) => {
+          toast.warn("One Item Delete Successfully! ✔", {
+            position: "bottom-left",
+            autoClose: 3000,
+          });
+          setRestoreStone(!restoreStone);
+        });
+    }
+  };
 
   const navigate = useNavigate();
   return (
     <section className="max-w-[1100px] mx-auto font-mono  px-2">
+      {/* page title  */}
       <MyHelmet title="manage" />
+      {/* Toast container  */}
+      <ToastContainer />
       <div className="heading my-8 py-4">
         <h2 className="section-heading md:text-6xl text-center text-4xl font-bold tracking-tighter my-6 md:my-12 ">
           Management Stones
@@ -39,7 +70,11 @@ const ManageInventory = () => {
           </thead>
           <tbody className="lg:text-xl md:text-sm text-xs">
             {stones.map((stone) => (
-              <ManageItem key={stone._id} data={stone} />
+              <ManageItem
+                key={stone._id}
+                data={stone}
+                handleDeleteItem={handleDeleteItem}
+              />
             ))}
           </tbody>
           <tfoot></tfoot>

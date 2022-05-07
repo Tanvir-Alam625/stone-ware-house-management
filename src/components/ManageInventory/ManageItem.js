@@ -1,8 +1,8 @@
 import { TrashIcon } from "@heroicons/react/solid";
 import React from "react";
 
-const ManageItem = ({ data }) => {
-  const { img, name, quantity, price } = data;
+const ManageItem = ({ data, handleDeleteItem }) => {
+  const { img, name, quantity, price, _id } = data;
 
   return (
     <tr className="hover:bg-white duration-300 ease-in-out hover:text-teal-400">
@@ -18,7 +18,10 @@ const ManageItem = ({ data }) => {
       <td className="border-2 border-teal-400 text-center ">{quantity}</td>
       <td className="border-2 border-teal-400 text-center">${price}</td>
       <td className="border-2 border-teal-400 text-center ">
-        <TrashIcon className="md:h-6 h-4 lg:h-12 mx-auto hover:text-red-500 duration-300 ease-in-out cursor-pointer" />
+        <TrashIcon
+          onClick={() => handleDeleteItem(_id)}
+          className="md:h-6 h-4 lg:h-12 mx-auto hover:text-red-500 duration-300 ease-in-out cursor-pointer"
+        />
       </td>
     </tr>
   );
