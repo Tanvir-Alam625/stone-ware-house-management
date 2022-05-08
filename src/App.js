@@ -5,7 +5,6 @@ import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
 import NotFound from "./components/NotFound/NotFound";
 import About from "./components/About/About";
-import Contact from "./components/Contact/Contact";
 import Inventory from "./components/Inventory/Inventory";
 import ManageInventory from "./components/ManageInventory/ManageInventory";
 import SignUp from "./components/SignUp/SignUp";
@@ -32,7 +31,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/blog" element={<Blogs />} />
           <Route
