@@ -31,7 +31,7 @@ const AddItem = () => {
       description,
       email,
     };
-    const url = "http://localhost:5000/AddStone";
+    const url = "https://salty-refuge-49616.herokuapp.com/AddStone";
     fetch(url, {
       method: "POST",
       headers: {

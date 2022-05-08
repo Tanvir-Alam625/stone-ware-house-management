@@ -1,8 +1,19 @@
-# Getting Started with Create React App
+# Stone ware house
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Website link [Stone ware house](https://stone-ware-house.web.app/).
 
-## Available Scripts
+sever code link [Stone ware house](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-Tanvir-Alam625).
+
+## Project description
+
+This is a Stone House management website.
+At Stone Warehouse, we offer a huge range of gravel, chippings and aggregate suitable for a variety of applications to help put the finishing touches on your outdoor projects.From decorative pea gravel to gravel stones for landscaping,
+
+## project details in bullet points
+
+- This is a Stone House management website.
+
+* this project use extension reactjs, expressjs, tailwindcss, firebase auth, mongoDB Atlas DBS etc.
 
 In the project directory, you can run:
 

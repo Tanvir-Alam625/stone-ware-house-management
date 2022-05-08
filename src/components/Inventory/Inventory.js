@@ -10,7 +10,7 @@ const Inventory = () => {
   const [pagination, setPagination] = useState(0);
   //DBS data Count Effect
   useEffect(() => {
-    const url = "http://localhost:5000/countData";
+    const url = "https://salty-refuge-49616.herokuapp.com/countData";
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -20,7 +20,7 @@ const Inventory = () => {
   }, []);
   // data load from mongodb server with pagination
   useEffect(() => {
-    const url = `http://localhost:5000/inventory?page=${pagination}`;
+    const url = `https://salty-refuge-49616.herokuapp.com/inventory?page=${pagination}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

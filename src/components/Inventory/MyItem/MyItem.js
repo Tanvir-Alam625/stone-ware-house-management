@@ -15,7 +15,7 @@ const MyItem = () => {
   useEffect(() => {
     const onLoadItems = () => {
       const email = user.email;
-      const url = `http://localhost:5000/myItem?email=${email}`;
+      const url = `https://salty-refuge-49616.herokuapp.com/myItem?email=${email}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => {
@@ -27,7 +27,7 @@ const MyItem = () => {
   }, [user, restoreStone]);
   const handleDeleteItem = (id) => {
     const condition = window.confirm("Are you sure!");
-    const url = `http://localhost:5000/stone/${id}`;
+    const url = `https://salty-refuge-49616.herokuapp.com/stone/${id}`;
     if (condition) {
       fetch(url, { method: "DELETE" })
         .then((res) => res.json)
