@@ -9,11 +9,17 @@ sever code link [Stone ware house](https://github.com/ProgrammingHeroWC4/warehou
 This is a Stone House management website.
 At Stone Warehouse, we offer a huge range of gravel, chippings and aggregate suitable for a variety of applications to help put the finishing touches on your outdoor projects.From decorative pea gravel to gravel stones for landscaping,
 
-## project details in bullet points
+## Project details in bullet points
 
 - This is a Stone House management website.
 
 * this project use extension reactjs, expressjs, tailwindcss, firebase auth, mongoDB Atlas DBS etc.
+
+* The client side of this project is hosted on firebase.
+
+* And the server site has been deployed in heroku.
+
+* With this website it is possible to easily manage the collection of many Gula Stones.
 
 In the project directory, you can run:
 
