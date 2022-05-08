@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import Spinner from "../../Spinner/Spinner";
 import MyAddedItem from "./MyAddedItem";
 
 const MyItem = () => {
   const [items, setItems] = useState([]);
   const [user] = useAuthState(auth);
   const [restoreStone, setRestoreStone] = useState(false);
+  const [loadSpinner, setLoadSpinner] = useState(true);
 
   useEffect(() => {
     const onLoadItems = () => {
@@ -18,6 +20,7 @@ const MyItem = () => {
         .then((res) => res.json())
         .then((data) => {
           setItems(data);
+          setLoadSpinner(false);
         });
     };
     onLoadItems();
@@ -39,15 +42,19 @@ const MyItem = () => {
   };
   return (
     <section className="max-w-[1100px]  mx-auto font-mono min-h-screen my- text-gray-600 md:my-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {items.map((item) => (
-          <MyAddedItem
-            data={item}
-            handleDeleteItem={handleDeleteItem}
-            key={data._id}
-          />
-        ))}
-      </div>
+      {loadSpinner ? (
+        <Spinner />
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {items.map((item) => (
+            <MyAddedItem
+              data={item}
+              handleDeleteItem={handleDeleteItem}
+              key={data._id}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

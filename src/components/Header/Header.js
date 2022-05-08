@@ -130,7 +130,7 @@ const Header = () => {
             {user ? (
               <button
                 onClick={() => signOut(auth)}
-                className="py-1 px-3 border rounded-md  text-xl"
+                className="py-1 px-3 border rounded-md  text-xl ml-2"
               >
                 SignOut
               </button>
