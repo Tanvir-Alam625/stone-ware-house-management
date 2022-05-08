@@ -47,36 +47,7 @@ const Header = () => {
                 Home
               </Link>
             </li>
-            <li
-              onClick={() => setToggler(!toggler)}
-              className="relative pb-4 md:pb-8 lg:pb-0 lg:mb-0 lg:ml-6  text-xl tracking-tight  text-gray-600 hover:text-gray-900 duration-200 ease-linear cursor-pointer"
-            >
-              <Link
-                className={`active-link hover:text-gray-900 px-2 lg:px-0 ${
-                  location.pathname === "/about"
-                    ? "active text-gray-900 "
-                    : "text-gray-600"
-                }`}
-                to="/about"
-              >
-                About Us
-              </Link>
-            </li>
-            <li
-              onClick={() => setToggler(!toggler)}
-              className="relative pb-4 md:pb-8 lg:pb-0 lg:mb-0 lg:ml-6   text-xl tracking-tight  text-gray-600 hover:text-gray-900 duration-200 ease-linear cursor-pointer"
-            >
-              <Link
-                className={`active-link hover:text-gray-900 px-2 lg:px-0 ${
-                  location.pathname === "/contact"
-                    ? "active text-gray-900 "
-                    : "text-gray-600"
-                }`}
-                to="/contact"
-              >
-                Contact
-              </Link>
-            </li>
+
             <li
               onClick={() => setToggler(!toggler)}
               className="relative pb-4 md:pb-8 lg:pb-0 lg:mb-0 lg:ml-6   text-xl tracking-tight  text-gray-600 hover:text-gray-900 duration-200 ease-linear cursor-pointer"
@@ -92,8 +63,38 @@ const Header = () => {
                 Inventory
               </Link>
             </li>
+            <li
+              onClick={() => setToggler(!toggler)}
+              className="relative pb-4 md:pb-8 lg:pb-0 lg:mb-0 lg:ml-6   text-xl tracking-tight  text-gray-600 hover:text-gray-900 duration-200 ease-linear cursor-pointer"
+            >
+              <Link
+                className={`active-link hover:text-gray-900 px-2 lg:px-0 ${
+                  location.pathname === "/blog"
+                    ? "active text-gray-900 "
+                    : "text-gray-600"
+                }`}
+                to="/blog"
+              >
+                Blogs
+              </Link>
+            </li>
             {user && (
               <>
+                <li
+                  onClick={() => setToggler(!toggler)}
+                  className="relative pb-4 md:pb-8 lg:pb-0 lg:mb-0 lg:ml-6   text-xl tracking-tight  text-gray-600 hover:text-gray-900 duration-200 ease-linear cursor-pointer"
+                >
+                  <Link
+                    className={`active-link hover:text-gray-900 px-2 lg:px-0 ${
+                      location.pathname === "/add"
+                        ? "active text-gray-900 "
+                        : "text-gray-600"
+                    }`}
+                    to="/add"
+                  >
+                    Add Item
+                  </Link>
+                </li>
                 <li
                   onClick={() => setToggler(!toggler)}
                   className="relative pb-4 md:pb-8 lg:pb-0 lg:mb-0 lg:ml-6   text-xl tracking-tight  text-gray-600 hover:text-gray-900 duration-200 ease-linear cursor-pointer"
