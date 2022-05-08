@@ -51,7 +51,6 @@ const SignIn = () => {
               type="email"
               name="email"
               id="email"
-              autoComplete="off"
               required
               placeholder="Your Answer"
               className={inputStyle}

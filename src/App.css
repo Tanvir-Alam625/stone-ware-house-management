@@ -81,6 +81,19 @@
 .App-link {
   color: #61dafb;
 }
+/* my item style  */
+.myItem {
+  overflow: hidden;
+}
+.myItem .deleteItem {
+  position: absolute;
+  right: -100px;
+  transition: 300ms ease-in-out;
+}
+.myItem:hover .deleteItem {
+  position: absolute;
+  right: 5px;
+}
 
 /* --------------------- */
 /* spinner  */
