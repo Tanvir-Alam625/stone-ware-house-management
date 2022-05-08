@@ -16,12 +16,14 @@ const AddItem = () => {
     const quantity = parseInt(event.target.quantity.value);
     const price = parseInt(event.target.price.value);
     const img = event.target.img.value;
+    const description = event.target.description.value;
     const newStone = {
       name,
       supllier,
       quantity,
       price,
       img,
+      description,
     };
     const url = "http://localhost:5000/AddStone";
     fetch(url, {
@@ -122,6 +124,21 @@ const AddItem = () => {
               name="img"
               id="img"
               className={inputStyle}
+              required
+              placeholder="Answer"
+              autoComplete="off"
+            />
+          </div>
+          <div className="form-group w-full my-4">
+            <label htmlFor="img" className=" text-sm md:text-xl">
+              Description
+            </label>
+            <br />
+            <textarea
+              type="text"
+              name="description"
+              id="description"
+              className="w-full outline-0 px-2 border-2 rounded-md border-gray-400 focus:border-teal-500  valid:border-teal-500 text-sm pt-1 md:text-xl text-teal-500"
               required
               placeholder="Answer"
               autoComplete="off"
