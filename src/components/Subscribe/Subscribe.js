@@ -3,7 +3,7 @@ import React from "react";
 const Subscribe = () => {
   return (
     <section className="subscribe-container  h-[400px] w-full flex flex-col justify-center items-center  font-mono">
-      <h1 className="text-center text-3xl font-bold text-white md:text-4xl lg:text-6xl mb-">
+      <h1 className="text-center text-3xl font-bold text-white md:text-4xl lg:text-6xl mb-4">
         SubScribe Now
       </h1>
       <div className="input  w-full flex  justify-center items-center">
