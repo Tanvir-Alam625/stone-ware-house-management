@@ -16,6 +16,7 @@ import InventoryDetail from "./components/Inventory/InventoryDetail/InventoryDet
 import RequireAuth from "./components/RequireAuth/RequireAuth";
 import AddItem from "./components/AddItem/AddItem";
 import { ToastContainer } from "react-toastify";
+import MyItem from "./components/Inventory/MyItem/MyItem";
 function App() {
   return (
     <div className="bg-[#F0F2F5]">
@@ -32,6 +33,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/inventory" element={<Inventory />} />
+          <Route
+            path="/myItem"
+            element={
+              <RequireAuth>
+                <MyItem />
+              </RequireAuth>
+            }
+          />
           <Route
             path="/add"
             element={
