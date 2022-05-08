@@ -1,10 +1,14 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 import MyHelmet from "../MyHelmet/MyHelmet";
 
 const AddItem = () => {
   const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+
   // input style
   const inputStyle =
     " w-full outline-0 px-2 border-b-2 border-gray-400 focus:border-teal-500  valid:border-teal-500 text-sm pt-1 md:text-xl text-teal-500";
@@ -17,6 +21,7 @@ const AddItem = () => {
     const price = parseInt(event.target.price.value);
     const img = event.target.img.value;
     const description = event.target.description.value;
+    const email = user.email;
     const newStone = {
       name,
       supllier,
@@ -24,6 +29,7 @@ const AddItem = () => {
       price,
       img,
       description,
+      email,
     };
     const url = "http://localhost:5000/AddStone";
     fetch(url, {

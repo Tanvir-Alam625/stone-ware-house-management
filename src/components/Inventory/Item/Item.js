@@ -6,7 +6,7 @@ const Item = ({ data }) => {
   const { name, img, description, price, supllier, quantity, _id } = data;
   const navigate = useNavigate();
   return (
-    <div className="bg-white  border shadow rounded-md mb-6  hover:shadow-xl">
+    <div className="bg-white  border shadow rounded-md mb-6  hover:shadow-xl text-gray-600">
       <img
         src={img ? img : ""}
         alt="item-img"
