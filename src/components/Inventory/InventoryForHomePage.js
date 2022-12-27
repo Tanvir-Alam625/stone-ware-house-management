@@ -8,7 +8,7 @@ const InventoryForHomePage = () => {
   const [stone, setStone] = useState([]);
   const [spinner, setSpinner] = useState(true);
   useEffect(() => {
-    fetch("https://salty-refuge-49616.herokuapp.com/stonesHomePage")
+    fetch("https://warehouse-management-system625.onrender.com/stonesHomePage")
       .then((res) => res.json())
       .then((data) => {
         setStone(data);

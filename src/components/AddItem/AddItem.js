@@ -31,7 +31,7 @@ const AddItem = () => {
       description,
       email,
     };
-    const url = "https://salty-refuge-49616.herokuapp.com/AddStone";
+    const url = "https://warehouse-management-system625.onrender.com/AddStone";
     fetch(url, {
       method: "POST",
       headers: {
