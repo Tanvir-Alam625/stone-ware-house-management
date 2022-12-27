@@ -16,7 +16,7 @@ const ManageInventory = () => {
   //data load
   //---------------------------
   useEffect(() => {
-    const url = "https://salty-refuge-49616.herokuapp.com/manageInventory";
+    const url = "https://warehouse-management-system625.onrender.com/manageInventory";
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -29,7 +29,7 @@ const ManageInventory = () => {
   //------------------------------
   const handleDeleteItem = (id) => {
     const condition = window.confirm("Are you sure!");
-    const url = `https://salty-refuge-49616.herokuapp.com/stone/${id}`;
+    const url = `https://warehouse-management-system625.onrender.com/stone/${id}`;
     if (condition) {
       fetch(url, { method: "DELETE" })
         .then((res) => res.json)

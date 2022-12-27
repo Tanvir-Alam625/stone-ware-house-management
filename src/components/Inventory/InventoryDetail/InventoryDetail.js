@@ -17,7 +17,7 @@ const InventoryDetail = () => {
   const [setSpinner, setSetSpinner] = useState(false);
   useEffect(() => {
     // setLargeSpinner(true);
-    fetch(`https://salty-refuge-49616.herokuapp.com/inventoryDetail/${id}`)
+    fetch(`https://warehouse-management-system625.onrender.com/inventoryDetail/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setStone(data);
@@ -33,7 +33,7 @@ const InventoryDetail = () => {
     stone.quantity = stone.quantity + newQuantity;
     console.log(newQuantity);
     setSetSpinner(true);
-    const url = `https://salty-refuge-49616.herokuapp.com/setQuantity/${id}`;
+    const url = `https://warehouse-management-system625.onrender.com/setQuantity/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -55,7 +55,7 @@ const InventoryDetail = () => {
   //delivery stone quantity
   // --------------------------
   const handleDeliveryBtn = () => {
-    const url = `https://salty-refuge-49616.herokuapp.com/delivery/${id}`;
+    const url = `https://warehouse-management-system625.onrender.com/delivery/${id}`;
     const decreaseQuantity = stone.quantity - 1;
     stone.quantity = decreaseQuantity;
     console.log(decreaseQuantity);
